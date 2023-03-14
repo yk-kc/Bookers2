@@ -45,8 +45,15 @@
           </tr>
         </thead>
         <tbody>
-
+          <% @books.each do |book| %>
+          <tr>
+            <td><%= image_tag 'default-image.jpg' %></td>
+            <td><%= book.title %></td>
+            <td><%= book.body %></td>
+          </tr>
+          <% end %>
         </tbody>
+
       </table>
     </div>
   </div>
