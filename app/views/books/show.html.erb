@@ -1,3 +1,40 @@
+<p><%= flash[:notice] %></p>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <%= render 'userinfo', book: @book %>
+
+    <div class="col-md-8 offset-md-1">
+      <h2>Book detail</h2>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>
+              <%= link_to users_path(@book.id) do %>
+                <%= image_tag current_user.profile_image %><br>
+                <%= @book.user.name %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to book_path(@book.id) do %>
+                <%= @book.title %>
+              <% end %>
+            </td>
+            <td><%= @book.body %></td>
+            <td>
+              <%= link_to "Edit", edit_book_path(@book.id), class: 'btn btn-success' %>
+            </td>
+            <td>
+              <% if @book.user == current_user %>
+                <%= link_to "Destroy", book_path(@book), method: :delete, class: 'btn btn-danger' %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
 <div>
   <p>タイトル：<%= @book.title %></p>
   <p>内容：<%= @book.body %></p>

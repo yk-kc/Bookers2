@@ -1,5 +1,11 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<p><%= flash[:notice] %></p>
+
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <%= render 'books/userinfo', book: @book %>
+    
+  </div>
+</div>
 
 <!-- ユーザーの詳細 -->
 <div>
