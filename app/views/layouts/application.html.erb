@@ -24,10 +24,12 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                <a class="nav-link text-light" href="/"><i class="fas fa-home"></i> Home<span class="sr-only">(current)</span></a>
-              </li>
               <% if user_signed_in? %>
+              <li class="nav-item">
+              <%= link_to user_path(current_user), class: 'nav-link text-light' do %>
+                <i class="fas fa-home"></i> Home
+                <% end %>
+              </li>
               <li class="nav-item">
                 <a class="nav-link text-light" href="/users"><i class="fas fa-users"></i> Users</a>
               </li>
@@ -35,15 +37,16 @@
                 <a class="nav-link text-light" href="/books"><i class="fas fa-book-open"></i> Books</a>
               </li>
               <li class="nav-item">
-
                 <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-light' do %>
                 <i class="fas fa-sign-out-alt"></i> Log out
                 <% end %>
-
               </li>
               <% else %>
               <li class="nav-item">
-                <a class="nav-link text-light" href="/homes/about"><i class="fas fa-link"></i> About</a>
+                <a class="nav-link text-light" href="/"><i class="fas fa-home"></i> Home<span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-light" href="/home/about"><i class="fas fa-link"></i> About</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link text-light" href="/users/sign_up"><i class="fas fa-user-plus"></i> Sign up</a>

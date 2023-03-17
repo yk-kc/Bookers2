@@ -1,0 +1,110 @@
+
+Bookモデルのテスト
+  バリデーションのテスト
+    titleカラム
+[32m      空欄でないこと[0m
+    bodyカラム
+[32m      空欄でないこと[0m
+[32m      200文字以下であること: 200文字は〇[0m
+[32m      200文字以下であること: 201文字は×[0m
+  アソシエーションのテスト
+    Userモデルとの関係
+[32m      N:1となっている[0m
+
+Userモデルのテスト
+  バリデーションのテスト
+    nameカラム
+[32m      空欄でないこと[0m
+[32m      2文字以上であること: 1文字は×[0m
+[32m      2文字以上であること: 2文字は〇[0m
+[32m      20文字以下であること: 20文字は〇[0m
+[32m      20文字以下であること: 21文字は×[0m
+[32m      一意性があること[0m
+    introductionカラム
+[32m      50文字以下であること: 50文字は〇[0m
+[32m      50文字以下であること: 51文字は×[0m
+  アソシエーションのテスト
+    Bookモデルとの関係
+[32m      1:Nとなっている[0m
+
+[STEP1] ユーザログイン前のテスト
+  トップ画面のテスト
+    表示内容の確認
+[31m      URLが正しい (FAILED - 1)[0m
+
+Failures:
+
+  1) [STEP1] ユーザログイン前のテスト トップ画面のテスト 表示内容の確認 URLが正しい
+     [31mFailure/Error: <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>[0m
+     [31m[0m
+     [31mActionView::Template::Error:[0m
+     [31m  Webpacker can't find application.js in /home/ec2-user/environment/Bookers2/public/packs-test/manifest.json. Possible causes:[0m
+     [31m  1. You want to set webpacker.yml value of compile to true for your environment[0m
+     [31m     unless you are using the `webpack -w` or the webpack-dev-server.[0m
+     [31m  2. webpack has not yet re-run to reflect updates.[0m
+     [31m  3. You have misconfigured Webpacker's config/webpacker.yml file.[0m
+     [31m  4. Your webpack configuration is not creating a manifest.[0m
+     [31m  Your manifest contains:[0m
+     [31m  {[0m
+     [31m  }[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/webpacker-5.4.4/lib/webpacker/manifest.rb:79:in `handle_missing_entry'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/webpacker-5.4.4/lib/webpacker/manifest.rb:49:in `lookup!'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/webpacker-5.4.4/lib/webpacker/helper.rb:182:in `block in sources_from_manifest_entries'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/webpacker-5.4.4/lib/webpacker/helper.rb:182:in `map'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/webpacker-5.4.4/lib/webpacker/helper.rb:182:in `sources_from_manifest_entries'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/webpacker-5.4.4/lib/webpacker/helper.rb:81:in `javascript_pack_tag'[0m
+     [36m# ./app/views/layouts/application.html.erb:11:in `_app_views_layouts_application_html_erb__555152744189158382_23620'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/actiontext-6.1.7.2/lib/action_text/rendering.rb:20:in `with_renderer'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/actiontext-6.1.7.2/lib/action_text/engine.rb:59:in `block (4 levels) in <class:Engine>'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/warden-1.2.9/lib/warden/manager.rb:36:in `block in call'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/warden-1.2.9/lib/warden/manager.rb:34:in `catch'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/warden-1.2.9/lib/warden/manager.rb:34:in `call'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.6.3/lib/rack/tempfile_reaper.rb:15:in `call'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.6.3/lib/rack/etag.rb:27:in `call'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.6.3/lib/rack/conditional_get.rb:27:in `call'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.6.3/lib/rack/head.rb:12:in `call'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.6.3/lib/rack/session/abstract/id.rb:266:in `context'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.6.3/lib/rack/session/abstract/id.rb:260:in `call'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.7.2/lib/rails/rack/logger.rb:37:in `call_app'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.7.2/lib/rails/rack/logger.rb:26:in `block in call'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.7.2/lib/rails/rack/logger.rb:26:in `call'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.6.3/lib/rack/method_override.rb:24:in `call'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.6.3/lib/rack/runtime.rb:22:in `call'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.6.3/lib/rack/sendfile.rb:110:in `call'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/railties-6.1.7.2/lib/rails/engine.rb:539:in `call'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.6.3/lib/rack/urlmap.rb:74:in `block in call'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.6.3/lib/rack/urlmap.rb:58:in `each'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.6.3/lib/rack/urlmap.rb:58:in `call'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-2.2.6.3/lib/rack/builder.rb:244:in `call'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:358:in `process_request'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:165:in `custom_request'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/rack-test-2.0.2/lib/rack/test.rb:114:in `get'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/rack_test/browser.rb:80:in `process'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/rack_test/browser.rb:55:in `process_and_follow_redirects'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/rack_test/browser.rb:26:in `visit'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/rack_test/driver.rb:46:in `visit'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/session.rb:280:in `visit'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/dsl.rb:52:in `call'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/dsl.rb:52:in `visit'[0m
+     [36m# ./spec/system/01_before_login_spec.rb:6:in `block (3 levels) in <main>'[0m
+     [36m# ------------------[0m
+     [36m# --- Caused by: ---[0m
+     [36m# Webpacker::Manifest::MissingEntryError:[0m
+     [36m#   Webpacker can't find application.js in /home/ec2-user/environment/Bookers2/public/packs-test/manifest.json. Possible causes:[0m
+     [36m#   1. You want to set webpacker.yml value of compile to true for your environment[0m
+     [36m#      unless you are using the `webpack -w` or the webpack-dev-server.[0m
+     [36m#   2. webpack has not yet re-run to reflect updates.[0m
+     [36m#   3. You have misconfigured Webpacker's config/webpacker.yml file.[0m
+     [36m#   4. Your webpack configuration is not creating a manifest.[0m
+     [36m#   Your manifest contains:[0m
+     [36m#   {[0m
+     [36m#   }[0m
+     [36m#   /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/webpacker-5.4.4/lib/webpacker/manifest.rb:79:in `handle_missing_entry'[0m
+
+Finished in 7 minutes 7 seconds (files took 1 minute 7.79 seconds to load)
+[31m15 examples, 1 failure[0m
+
+Failed examples:
+
+[31mrspec ./spec/system/01_before_login_spec.rb:10[0m [36m# [STEP1] ユーザログイン前のテスト トップ画面のテスト 表示内容の確認 URLが正しい[0m
+
