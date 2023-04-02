@@ -11,7 +11,7 @@
   </div>
 <% end %>
   <div class="row">
-    <%= render 'userinfo', book: @new, current_user: @book.user %>
+    <%= render 'userinfo', book: @new, current_user: @book.user, user: current_user %>
 
     <div class="col-md-8 offset-md-1">
       <h2>Book detail</h2>
