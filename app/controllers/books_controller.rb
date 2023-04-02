@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-before_action :is_matching_login_user, only: [:edit, :update, :destroy]
+  before_action :is_matching_login_user, only: [:edit, :update, :destroy]
 
   def index
     @book = Book.new
@@ -40,20 +40,18 @@ before_action :is_matching_login_user, only: [:edit, :update, :destroy]
   def destroy
     book = Book.find(params[:id])
     book.destroy
-    redirect_to '/books'
+    redirect_to "/books"
   end
 
   private
-
-  def book_params
-    params.require(:book).permit(:title, :body)
-  end
-
-  def is_matching_login_user
-    @book = Book.find(params[:id])
-    unless @book.user == current_user
-      redirect_to books_path
+    def book_params
+      params.require(:book).permit(:title, :body)
     end
-  end
 
+    def is_matching_login_user
+      @book = Book.find(params[:id])
+      unless @book.user == current_user
+        redirect_to books_path
+      end
+    end
 end
