@@ -43,6 +43,17 @@
         </tbody>
       </table>
 
+      <%= form_with url: user_search_path(@user), method: :get, local: false do |f| %>
+        <%= f.date_field :created_at %>
+        <%= f.submit '検索', class: 'btn btn-primary'  %>
+      <% end %>
+
+      <div id="search_result">
+        <% if @search_book.present? %>
+          <%= render 'search', search_book: @search_book %>　#③
+        <% end %>
+      </div>
+
       <div class="table_width">
         <h2>投稿数の前日比・前週比</h2>
         <table class="table table-bordered">
@@ -116,57 +127,53 @@
             </tr>
           </tbody>
         </table>
-        <!--
-        <div>
-        <canvas id="myChart"></canvas>
-        </div>
+        <canvas id="myLineChart"></canvas>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<script>
-  $(document).on('turbolinks:load', function() {
-      var ctx = document.getElementById("myLineChart");
-      var myLineChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ['6日前', '5日前', '4日前', '3日前', '2日前', '1日前', '今日'],
-          datasets: [{
-            label: '投稿した本の数',
-            data: [<%= @books.created_days_ago(6).count %>,
-                   <%= @books.created_days_ago(5).count %>,
-                   <%= @books.created_days_ago(4).count %>,
-                   <%= @books.created_days_ago(3).count %>,
-                   <%= @books.created_days_ago(2).count %>,
-                   <%= @books.created_days_ago(1).count %>,
-                   <%= @books.created_days_ago(0).count %>],
-            borderWidth: 1
-            }],
-        },
-
-    　options: {
-    　   title: {
-          display: true,
-          text: '7日間の投稿数の比較'
-        },
-        scales: {
-          yAxes: [{
-            ticks: {
-              suggestedMax: 10,
-              suggestedMin: 0,
-              stepSize: 1,
-              callback: function(value, index, values){
-              return  value
+        <script>
+          $(document).on('turbolinks:load', function() {
+            var ctx = document.getElementById("myLineChart");
+            var myLineChart = new Chart(ctx, {
+              type: 'line',
+              data: {
+                labels: ['6日前', '5日前', '4日前', '3日前', '2日前', '1日前', '今日'],
+                datasets: [
+                  {
+                    label: '投稿した本の数',
+                    data: [
+                      <%= @books.created_days_ago(6).count %>,
+                      <%= @books.created_days_ago(5).count %>,
+                      <%= @books.created_days_ago(4).count %>,
+                      <%= @books.created_days_ago(3).count %>,
+                      <%= @books.created_days_ago(2).count %>,
+                      <%= @books.created_days_ago(1).count %>,
+                      <%= @books.created_days_ago(0).count %>],
+                    borderColor: "rgba(0,0,255,1)",
+                    backgroundColor: "rgba(0,0,0,0)",
+                    tension: 0.4
+                  }
+                ],
+              },
+              options: {
+                title: {
+                  display: true,
+                  text: '7日間の投稿数の比較'
+                },
+                responsive: true,
+                scales: {
+                  y:{
+                    suggestedMin: 0,
+                    suggestedMax: 10
+                  },
+                  x:{
+                    stacked: true
+                  },
+                },
               }
-            }
-          }]
-        },
-      }
-      });
-  });
-</script>
--->
-<div>
+            });
+          });
+        </script>
+        <!--
   <canvas id="myChart"></canvas>
-</div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -186,23 +193,25 @@
           <%= @books.created_days_ago(2).count %>,
           <%= @books.created_days_ago(1).count %>,
           <%= @books.created_days_ago(0).count %>],
-        lineTension: 0.3,
+        lineTension: 0.4,
         borderWidth: 1
       }]
     },
     options: {
       title: {
-            display: true,
-            text: '7日間の投稿数の比較'
-          },
+        display: true,
+        text: '7日間の投稿数の比較'
+      },
       scales: {
         y: {
-          beginAtZero: true
+          suggestedMin: 0,
+          suggestedMax: 10
         }
       }
     }
   });
 </script>
+-->
       </div>
     </div>
   </div>
