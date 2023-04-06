@@ -27,7 +27,7 @@
           <tr>
             <td>
               <%= link_to user_path(book.user) do %>
-                <%= image_tag book.user.get_profile_image(100,100) %>
+                <%= image_tag book.user.get_profile_image(50,50) %>
               <% end %>
               </td>
             <td>
@@ -37,6 +37,7 @@
               </td>
             <td><%= book.body %></td>
             <td><%= render 'favorites/btn', book: book %></td>
+            <td>コメント数: <%= book.book_comments.count %></td>
           </tr>
           <% end %>
         </tbody>
