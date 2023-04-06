@@ -11,7 +11,9 @@ Rails.application.routes.draw do
     get "search", to: "users#search"
   end
 
-  resources :books, only: [:index, :create, :show, :edit, :update, :destroy]
+  resources :books, only: [:index, :create, :show, :edit, :update, :destroy] do
+    resource :favorites, only: [:create, :destroy]
+  end
 
   get "home/about" => "homes#about", as: "about"
   get "search" => "searches#search"
