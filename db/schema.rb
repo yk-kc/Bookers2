@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_06_091500) do
+ActiveRecord::Schema.define(version: 2023_04_07_140738) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2023_04_06_091500) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "rate"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -68,6 +69,21 @@ ActiveRecord::Schema.define(version: 2023_04_06_091500) do
     t.integer "followed_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text "comment", null: false
+    t.float "all_rating", default: 0.0, null: false
+    t.float "rating1", default: 0.0, null: false
+    t.float "rating2", default: 0.0, null: false
+    t.float "rating3", default: 0.0, null: false
+    t.float "rating4", default: 0.0, null: false
+    t.integer "user_id", null: false
+    t.integer "item_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_reviews_on_item_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -86,4 +102,6 @@ ActiveRecord::Schema.define(version: 2023_04_06_091500) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "reviews", "items"
+  add_foreign_key "reviews", "users"
 end
