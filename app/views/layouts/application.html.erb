@@ -63,9 +63,11 @@
     </header>
     <main>
       <p><%= flash[:notice] %></p>
+      <div class="container">
       <div class="d-flex justify-content-center mb-2">
-        <%= render 'searches/form' %>
-        <%= render 'tag_searches/tag_search' %>
+        <div class="mr-3"><%= render 'searches/form' %></div>
+        <div class="mr-3"><%= render 'tag_searches/tag_search' %></div>
+      </div>
       </div>
       <%= yield %>
     </main>
